@@ -117,3 +117,11 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 ## Skipping the staging area
 
 - `git commit -a -m "message"` - This command skips the stagging area and directly commits all the files from the modified section to the local repository. This command does not add the untracked files to the staging area. This command does not work for new files. This command is not recommended as it does not give a chance to review the changes before commiting.
+
+## Moving and Renaming files
+
+- `git mv <filename> <newfilename>` - Moves the file to the new file name. This command is equivalent to `mv <filename> <newfilename>` 
+- `git rm <filename>` - Removes the file from the working directory. This command is equivalent to `rm <filename>`
+
+**Note**: These command are equivalent to there linux commands. The only difference is that the git command autoamatically tracks the changes and add these changes to the staging area to be commited.
+
