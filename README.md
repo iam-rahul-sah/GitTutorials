@@ -55,7 +55,7 @@ commit - It is the process of saving the changes to the local repository through
 
 - `git commit` - Commits the files in the staging area to the local repository. We can also use `git commit -m "message"` to add a message to the commit in the terminal itself or else it will open the default editor to add the message.  
 
-Note: A commit message should specify "WHAT" are the changes and "WHY" you have made the changes. 
+**Note**: A commit message should specify "WHAT" are the changes and "WHY" you have made the changes. 
 
 - `git log` - Shows the commit history.
  
@@ -69,8 +69,11 @@ Note: A commit message should specify "WHAT" are the changes and "WHY" you have 
 - Unmodified - The file is tracked by GIT and is not modified.
 - Modified - The file is tracked by GIT and is modified.
 - Staged - The file is tracked by GIT and is staged for commit.
+- committed - The file is tracked by GIT and is committed to the local repository.
 
 Once a git repository is initialized all the files inside it are untracked. Using `git add` we can add the files to the staging area. Once the files are added to the staging area, the files are tracked by GIT and are in the staged state. Once the files are committed, the files are in the unmodified state. If a file is in staging area and is modified, then the file co-exits in the staging area as well as the modified area. Commiting the file will capture the snapshot of the file in the staging area.
+
+![File status lifecycle](/fileStatusLifecycle.png)
 
 Example Step
 
@@ -82,3 +85,23 @@ Example Step
 1. The name.md file is again modified instead of commiting the file.
 1. The file is in the modified state and the staged state(both co-exist).
 1. The file is committed using `git commit` and the file in the staged state is captured in the local repository and the file in the modified state still exist in the modified state.
+
+
+## .gitignore file
+
+.gitignore file is used to ignore the files that are not required to be tracked by GIT. The files that are ignored are not tracked by GIT and are not shown in the `git status` command.
+
+### .gitignore file syntax
+`<filename with extension>`
+`<directoryname>`
+`<pattern>`
+`!` - To unignore the file.
+`*.ext` - To ignore all files in the directory. With the specified extension.
+`*` - To ignore all files in the directory.
+`**` - To ignore all files in the directory and subdirectories.
+`/` - To ignore the directory.
+`#` - To add comments.
+`dir/` - To ignore the directory.
+`/dir/` - only ignores the 'dir' in the root folder, rest 'dir' within directories and sub-directories will be tracked.
+
+**Note**: `Blank folder` or folder only containing igonred files are by default igonred by GIT.
