@@ -212,3 +212,15 @@ Now we can add this generated SSH key to our git account.
 - `git fetch` - This command is used to update or fetch any changes int he remote repository.
 - `git pull` - This command is used to update your git version history similar to the remote repository.
 - `git push` - This command is used to update remote repository version similar to your PC's git version.
+
+## Setting alias in git
+
+- `git config --global alias.shortcut_key git_command` - This command is used to set alais for a git command
+
+**Example** - `git config --global alias.st status` - Command to create 'st' as a shortcut for status.
+
+**Note** - For a command with multiple word we need to enclose it within quotes.
+
+**Example** - `git config --global alias.unstage 'restore --staged --'` - Here "--" is necessary as it take additional argument as file name or else it won't work.
+
+**Example** - `git config --global alias.last 'log -p -1'`
