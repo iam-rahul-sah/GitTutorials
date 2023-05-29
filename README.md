@@ -75,7 +75,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 
 ![File status lifecycle](/fileStatusLifecycle.png)
 
-Example Step
+*Example Step*:
 
 1. A git repository is initialized(with name.md file) and the file is untracked.
 1. The file is added to the staging area using `git add name.md` and the file is in the staged state.
@@ -92,17 +92,17 @@ Example Step
 .gitignore file is used to ignore the files that are not required to be tracked by GIT. The files that are ignored are not tracked by GIT and are not shown in the `git status` command.
 
 ### .gitignore file syntax
-`<filename with extension>`
-`<directoryname>`
-`<pattern>`
-`!` - To unignore the file.
-`*.ext` - To ignore all files in the directory. With the specified extension.
-`*` - To ignore all files in the directory.
-`**` - To ignore all files in the directory and subdirectories.
-`/` - To ignore the directory.
-`#` - To add comments.
-`dir/` - To ignore the directory.
-`/dir/` - only ignores the 'dir' in the root folder, rest 'dir' within directories and sub-directories will be tracked.
+`<filename with extension>`  
+`<directoryname>`  
+`<pattern>`  
+`!` - To unignore the file.  
+`*.ext` - To ignore all files in the directory. With the specified extension.  
+`*` - To ignore all files in the directory.  
+`**` - To ignore all files in the directory and subdirectories.  
+`/` - To ignore the directory.  
+`#` - To add comments.  
+`dir/` - To ignore the directory.  
+`/dir/` - only ignores the 'dir' in the root folder, rest 'dir' within directories and sub-directories will be tracked.  
 
 **Note**: `Blank folder` or folder only containing igonred files are by default igonred by GIT.
 
@@ -112,3 +112,8 @@ Example Step
 
 - `git diff` - Shows the difference between the modified version(there should be a modified verison of the file or it does not yield any result) of a file and the staged version of the file(if one exists or the committed version of the file)
 - `git diff --staged` - Shows the difference between the staging area and the local repository.
+
+
+## Skipping the staging area
+
+- `git commit -a -m "message"` - This command skips the stagging area and directly commits all the files from the modified section to the local repository. This command does not add the untracked files to the staging area. This command does not work for new files. This command is not recommended as it does not give a chance to review the changes before commiting.
