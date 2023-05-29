@@ -105,3 +105,10 @@ Example Step
 `/dir/` - only ignores the 'dir' in the root folder, rest 'dir' within directories and sub-directories will be tracked.
 
 **Note**: `Blank folder` or folder only containing igonred files are by default igonred by GIT.
+
+**Note**: If a file is already tracked by GIT and is added to the .gitignore file, then the file will still be tracked by GIT. To stop tracking the file, we need to remove the file from the staging area using `git rm --cached <filename>` and commit the changes.
+
+## GIT diff
+
+- `git diff` - Shows the difference between the modified version(there should be a modified verison of the file or it does not yield any result) of a file and the staged version of the file(if one exists or the committed version of the file)
+- `git diff --staged` - Shows the difference between the staging area and the local repository.
