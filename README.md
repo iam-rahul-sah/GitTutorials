@@ -224,3 +224,11 @@ Now we can add this generated SSH key to our git account.
 **Example** - `git config --global alias.unstage 'restore --staged --'` - Here "--" is necessary as it take additional argument as file name or else it won't work.
 
 **Example** - `git config --global alias.last 'log -p -1'`
+
+## Creating and switching braches in GIT.
+
+- `git checkout -b branchname` - This command switches a branch if one exits or else create a new branch and then switches to the new branch.
+- `git checkout branchname` - This command switches to the specified branch(if one exists) or throws an error if one does not exist.
+- `git branch` - shows a list of branch
+
+**Note** - Changing branches have no effect on ignored files
