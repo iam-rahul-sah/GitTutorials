@@ -3,9 +3,9 @@
 **Index**
 1. Git introduction
     - Why is GIT around?
-    - Features of GIT.
-    - History of VCS.
-    - Distinctive features of GIT from other VCS.
+    - Features of GIT
+    - History of VCS
+    - Distinctive features of GIT from other VCS
 2. Setting GIT for usage
 3. GIT - Three stage architecture
 4. Getting started - Tracking your file(Basic and most common git command)
@@ -16,7 +16,22 @@
 9. Viewing(logging) commit history and difference between the commits.
 10. All about git commit
 11. Unstaging or unmodifying files
-
+12. Setting alias in git
+13. Working with remote repositories
+14. All about branches in GIT.
+15. Merge
+16. Merge conflict
+17. Git squash
+18. Interactive rebase
+19. Cherry picking 
+20. Reflog
+21. Submodules
+22. git revert reset
+23. git tag
+24. git stash
+25. git blame
+26. git bisect
+27. git diff-tree
 
 ---
 
@@ -322,11 +337,6 @@ Now we can add this generated SSH key to our git account.
 - `git pull` - This command is used to update your git repository similar to the remote repository. This command does a `git fetch` followed by a `git commit`.
 - `git push` - This command is used to update remote repository version similar to your PC's git version.
 
-**Deleting a branch on the remote server**
-
-- `git push -d origin <remote_branch_name>`
-
-
 **Pull request**
 - A pull request invites reviewers to provide feedback before merging
 - Contributing code to other repositories
@@ -334,7 +344,7 @@ Now we can add this generated SSH key to our git account.
 **Fork**
 A fork is a personal copy of a git repository. By creating a "fork" of the original repository, where you can make changes, and then you can suggest those changes to be included via pull request to the main repository.
 
-** --set-upstream flag**
+**--set-upstream flag**
 
 `git push --set-upstream origin <branchname>`
 
@@ -342,7 +352,7 @@ A fork is a personal copy of a git repository. By creating a "fork" of the origi
 
 ---
 
-## All about branches in GIT.
+## 14. All about branches in GIT.
 
 A branch is a local copy of your code base where you can make changes without affecting your original code. These changes can later be integrated into your main workflow if everything goes well.
 
@@ -378,7 +388,7 @@ Different type of branches, fulfill differeent types of jobs
 
 2. Short lived branches - For new features, bug fixes, refactoring, experiments. Branches are deleted after integration.
 
-**Github flow - very simple, verylean: only one long-running branch("main") + feature branches.**
+**Github flow - very simple, very lean: only one long-running branch("main") + feature branches.**
 
 **How to work with branches.**
 
@@ -392,7 +402,7 @@ Different type of branches, fulfill differeent types of jobs
 
 **Note** - Changing branches have no effect on ignored files.
 
-2. Creating a branch from particular commit as the common ancestor
+2. Creating a branch from particular commit as the common ancestor  
 `git branch <branchname> '<commithash>'`
 
 3. Switching branches.
@@ -404,13 +414,13 @@ $ git checkout <branchname>
 $ git switch <branchname>
 ```
 
-4. Renaming a branch(Renaming current head branch)
+4. Renaming a branch(Renaming current head branch)  
 `git branch -m <newname>`
 
-5. Renaming a non-head branch(i.e. some other branch)
+5. Renaming a non-head branch(i.e. some other branch)  
 `git branch -m <branchname> <newname>`
 
-6. Pushing to a remote branches
+6. Pushing to a remote branches  
 `git push -u origin <local branch>`
 -u specifies to keep track of remotee branch, so next time we can use "git push" simply.
 
@@ -423,7 +433,7 @@ $ git branch --track <new-branch> origin/<base-branch>
 $ git branch --track origin/<base-branch>
 ```
 
-8. Checking status of your branches
+8. Checking status of your branches  
 `git branch -v`
 
 9. Deleting branches
@@ -436,10 +446,14 @@ $ git branch --track origin/<base-branch>
 
 **Note** - Always make sure all you branches are merged before deleting.
 
-10. Deleting remote branch
-`git push origin --delete <branchname>`
+10. Deleting remote branch  
+```
+git push origin --delete <branchname>
+            or
+git push -d origin <remote_branch_name>
+```
 
-11. Merging branch(Integrating into your current active branch)
+11. Merging branch(Integrating into your current active branch)  
 `git merge <branch name>`
 
 12. Comparing branches
@@ -478,8 +492,3 @@ commit history of a code base
 - `git branch --merged` - This command returns the list of branches that have been already merged to your current branch.
 - `git branch --no-merged`
 
-## Merge conflicts
-## Interactive rebase
-## Cherry picking 
-## Reflog
-## Submodules
