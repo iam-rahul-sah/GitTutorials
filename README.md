@@ -462,18 +462,30 @@ $ git log main..feature
 ```
 Note: This command shows the commit that are in the feature branch but are not in the main branch.
 
-
-
-
-
-
-
-
-
-
+---
 ## Git merge and squash
 
-commit history of a code base
+Git merge is used to integrate changes from one branch into another branch. `git merge` command is used to merge branches.
+
+**How a git merge workds**
+
+1. A simplified scenario(Fast-forward merge)
+git looks for three things before merging a branch
+- Common ancestor
+- last commit on the current branch
+- last commit on the branch to be merged
+![fast-forward merge](/images/fast_forward_merge.png)
+
+2. A more realistic scenario
+![simple merge commit example](/images/simple_merge_commit_example.png)
+
+**When is a git squash used**
+
+- Squash is used to create a single commit from multiple commits.
+- Squash is used to create a clean and straight commit history
+
+**Squash commit scenario**  
+*commit history of a code base*
 
 ![commit history of a code base](/images/branching_workflow.png)
 
@@ -485,10 +497,88 @@ commit history of a code base
 
 ![merge using squash](/images/merge_using_squash_flag.png)
 
-
+---
 ## Merge conflict
 
+**How and when conflicts occur**  
+When integrating commits from different branches, git tries to merge them automatically. If there are no conflicts, git will create a new merge commit and you are done. If there are conflicts, git will stop and tell you that there are conflicts. You have to resolve them manually and then commit the result. Conflicts can also occur when rebasing, cherry-picking, pull or stash apply.
+
+**Merging changes that are completely different from each other is a flawless process.**
+
+![Simple merge process](/images/simple_merge_commit_example.png)
+
+**Merge conflict occures when contradictory changes are made to the same line of the same file.**
+
+![merge conflict example](/images/merge_conflict_example.png)
+
+Here in the commit C2 and C4 the exact same line of code(i.e. `<div>one</div>`) was modified. So git doesn't know which one to keep and which one to discard. So it asks us to resolve the conflict manually.
+
+**Undoing a conflict and start over**
+
+We can always undo a merge conflict and start over again by using.
+
+- `git merge --abort` - This command aborts the merge process and restores the state of the branch to the state before the merge process started.
+- `git reset --merge` - This command is used to undo a merge conflict and start over again.
+- `git rebase --abort` - This command aborts the rebase process and restores the state of the branch to the state before the rebase process started.
+
+**What does a merge conflict looks like in the code?**
+
+| symbol | meaning |
+|---|---|
+|<<<<<<< HEAD|Everything below this line is the content of the current branch.|
+|=======| This symbol seprates the changes from both the branches.|
+|>>>>>>> branchname|Everything below this line is the content of the branch that we are merging in the current branch.|
+
+
+**How to solve a conflict**
+simply solve the conflict in one of the files and keep only the changes that you wish to keep. Then add the file to the staging area and commit it. After that you can continue the merge process by running `git merge --continue`.
+
+- We can also use mergetool to solve a conflict. To use mergetool we need to install it first. To install mergetool we need to run `git config --global merge.tool <toolname>`. After installing mergetool we can run `git mergetool` to solve the conflict. 
+
+**Some useful git commands for checking the status of the branches in regars to the merge process**
 - `git branch -v` - This command returns the commit hash along with the message for the last commit in all the branch. It is useful to check if our commit are in unison or not.
 - `git branch --merged` - This command returns the list of branches that have been already merged to your current branch.
 - `git branch --no-merged`
 
+## Git rebase
+
+**What is git rebase?**
+When a user wants his commit to be a single line(without squashing) even when multiple branches have been integrated into the repository, then he can use git rebase. 
+
+`git rebase branch-b` - This command will take all the commits from branch-b and put them on top of the current branch. This will make the commit history a single line.
+
+**Rebase step by step**
+
+*Our git structure*  
+![git structure](/images/simple_branch_structure.png)
+
+The user wants to merge both the branches but without creating a "merge commit". So we can use rebase.
+
+**Step 1**  
+Commit C3 is removed and saved somewhere else temporarily.
+![git rebase step1](/images/rebase_Step1.png)
+
+**Step 2**  
+It does a fast forward commit by the time the C3 commit is parked somewhere else.
+![git rebase step2](/images/rebase_step2.png)
+
+**Step 3**
+It adds the parked commit to the head of the branch.
+![git rebase step3](/images/rebase_step3.png)
+
+
+**Note**: Rebasing rewrite commit history, ex C3 commit has changed its commit hash as its parent commit has changed.
+
+**Warning**: Do not use rebase on commits that you've already pushed/shared on a remote repository. Instead use it for cleaning up your local commit history before merging them it into shared team branch.
+
+
+18. Interactive rebase
+19. Cherry picking 
+20. Reflog
+21. Submodules
+22. git revert reset
+23. git tag
+24. git stash
+25. git blame
+26. git bisect
+27. git diff-tree
