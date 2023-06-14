@@ -571,14 +571,65 @@ It adds the parked commit to the head of the branch.
 
 **Warning**: Do not use rebase on commits that you've already pushed/shared on a remote repository. Instead use it for cleaning up your local commit history before merging them it into shared team branch.
 
+---
 
-18. Interactive rebase
-19. Cherry picking 
-20. Reflog
-21. Submodules
-22. git revert reset
-23. git tag
-24. git stash
-25. git blame
-26. git bisect
-27. git diff-tree
+## Interactive rebase
+Interactive rebase is a tool fo optimizing and cleaning up your commit history. With the help of interactive rebasing we can perfrom the following operation.
+- Change a commit's message
+- deletes commits
+- reorder commits
+- combine multiple commits into one
+- edit/split an existing commit into multiple new ones.
+
+**Interactive rebasing step by step**
+
+**Step 1**: Figure out how far back do you want to go. What should be the "base" commit for your rebasing
+
+**Step 2**: `git rebase -i HEAD~3`, here  
+![git head structure](/images/interactive_rebasing.png)
+- HEAD~3 specifies that we want the last third commit to be the base, commit starting from HEAD, HEAD~1, HEAD~2 and so on.
+- `-i` flag is used to specify interactive rebasing
+
+**Step3**  
+When we use the rebase interactive command, it show/opens the code editor with all the commits on top of our base commit(i.e. commit on top of HEAD~3). Alogn with all the 'action' command.
+
+*Action* command lets us specify what action we want to perfrom(like reword, edit, squash, etc). The first editor is only to specify the action to be performed on a commit.
+
+**Some action command**  
+*Reword* - It is used to edit the commit message.
+*Squash* - This action command combines the commits with the commit above it.
+
+Afer making/specifying the action in the first code editor, when we close this editor. It opens a new editor for making the changes.
+
+**Note**  
+- If we wish to make changes to the last commit we should use `git merge --amend` command instead.
+**Note**  
+- To make changes to a commit we need to atleast specify commit's parent as the base in the command. So for making changes to the HEAD~2 commit, we need to specify HEAD~3 as the base commit in the command like `git rebase -i HEAD~3`
+
+---
+## Cherry picking
+
+
+---
+## Reflog
+*Reflog* is a diary/log where git keep track of every movement of the head pointer. It stores the "commit hash" of the commit when our head pointer was in the branch.
+
+A very important use of *reflog* is for recovering deleted commit, branches. As reflog keep track of all the commit hash. We can copy the "commit-hash" of the commit that we wish to retrieve and create new branch using `git branch <branch-name> commit#`
+
+**Use case scenario**
+1. We think we need to get rid of some commit.  
+![git reflog](/images/git_reflog.png)
+2. We used `git reset --hard HEAD~2`  
+![After resetting](/images/After_resetting.png)
+3. Later we realized it was a bad idea. Now we can use the commit hash from the reflog `git reflog` to reset the branch to its previous state `git reset --hard commit#`. We can also create a new branch based on the deleted commit that we want to retrieve by using `git branch <branch-name> commit#`. 
+
+---
+
+## Submodules
+
+---
+git revert reset
+git tag
+git stash
+git blame
+git bisect
