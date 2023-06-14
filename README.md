@@ -137,7 +137,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 ## 6. Unstaging or unmodifying files
 
 - `git restore --staged <file>` - This command is used to move file from staging are back to modified file section(i.e. for unstaging the files)
-- `git checkout -- <file>` - This is another commit used to unstage the file
+- `git checkout -- <file>` - This is another command used to unstage the file
 - `git restore <file>` - This command is used to discard any changes in the file. It moves files from modified file section to unmodified file section. The changes to the unstaged files(modified file) is discarded and the files is restored to the version of the file from the previous commit.
 
 **Note**: We can use "." flag with the `git restore` command to specify all the file at once, and the "-f" flag with `git checkout` command to specify all the file at once.
