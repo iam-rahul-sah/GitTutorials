@@ -1,37 +1,32 @@
 # GIT Tutorials
 
 **Index**
-1. Git introduction
-    - Why is GIT around?
-    - Features of GIT
-    - History of VCS
-    - Distinctive features of GIT from other VCS
-2. Setting GIT for usage
-3. GIT - Three stage architecture
-4. Getting started - Tracking your file(Basic and most common git command)
-5. GIT file status lifecycle
-6. .gitignore file
-7. GIT diff
-8. Moving and Renaming files
-9. Viewing(logging) commit history and difference between the commits.
-10. All about git commit
-11. Unstaging or unmodifying files
-12. Setting alias in git
-13. Working with remote repositories
-14. All about branches in GIT.
-15. Merge
-16. Merge conflict
-17. Git squash
-18. Interactive rebase
-19. Cherry picking 
-20. Reflog
-21. Submodules
-22. git revert reset
-23. git tag
-24. git stash
-25. git blame
-26. git bisect
-27. git diff-tree
+1. [Git introduction](https://github.com/iam-rahul-sah/GitTutorials#1-git-introduction)
+2. [Setting GIT for usage](https://github.com/iam-rahul-sah/GitTutorials#2-setting-git-for-usage)
+3. [GIT - Three stage architecture](https://github.com/iam-rahul-sah/GitTutorials#3-git---three-stage-architecutre)
+4. [Getting started - Tracking your file(Basic and most common git command)](https://github.com/iam-rahul-sah/GitTutorials#3-git---three-stage-architecutre)
+5. [GIT file status lifecycle](https://github.com/iam-rahul-sah/GitTutorials#5-git-file-status-lifecycle)
+1. [Unstaging and Unmodifying file](https://github.com/iam-rahul-sah/GitTutorials#6-unstaging-or-unmodifying-files)
+1. [.gitignore file](https://github.com/iam-rahul-sah/GitTutorials#7-gitignore-file)
+1. [GIT diff](https://github.com/iam-rahul-sah/GitTutorials#8-git-diff)
+1. [Moving and Renaming files](https://github.com/iam-rahul-sah/GitTutorials#9-moving-and-renaming-files)
+1. [Viewing(logging) commit history and difference between the commits.](https://github.com/iam-rahul-sah/GitTutorials#10-viewinglogging-commit-history-and-difference-between-the-commits)
+1. [All about git commit](https://github.com/iam-rahul-sah/GitTutorials#11-all-about-git-commit)
+1. [Setting alias in git](https://github.com/iam-rahul-sah/GitTutorials#12-setting-alias-in-git)
+1. [Working with remote repositories](https://github.com/iam-rahul-sah/GitTutorials#13-working-with-remote-repositories)
+1. [All about branches in GIT.]()https://github.com/iam-rahul-sah/GitTutorials#14-all-about-branches-in-git
+1. [Git merge and squash](https://github.com/iam-rahul-sah/GitTutorials#15-git-merge-and-squash)
+1. [Merge conflict](https://github.com/iam-rahul-sah/GitTutorials-#16merge-conflict)
+1. [Git rebase](https://github.com/iam-rahul-sah/GitTutorials#17git-rebase)
+1. [Interactive rebasing]()
+1. [Cherry picking ]()
+1. [Reflog]()
+1. [Submodules]()
+1. [git revert reset]()
+1. [git tag]()
+1. [git stash]()
+1. [git blame]()
+1. [git bisect]()
 
 ---
 
@@ -463,7 +458,7 @@ $ git log main..feature
 Note: This command shows the commit that are in the feature branch but are not in the main branch.
 
 ---
-## Git merge and squash
+## 15. Git merge and squash
 
 Git merge is used to integrate changes from one branch into another branch. `git merge` command is used to merge branches.
 
@@ -498,7 +493,7 @@ git looks for three things before merging a branch
 ![merge using squash](/images/merge_using_squash_flag.png)
 
 ---
-## Merge conflict
+## 16. Merge conflict
 
 **How and when conflicts occur**  
 When integrating commits from different branches, git tries to merge them automatically. If there are no conflicts, git will create a new merge commit and you are done. If there are conflicts, git will stop and tell you that there are conflicts. You have to resolve them manually and then commit the result. Conflicts can also occur when rebasing, cherry-picking, pull or stash apply.
@@ -540,7 +535,8 @@ simply solve the conflict in one of the files and keep only the changes that you
 - `git branch --merged` - This command returns the list of branches that have been already merged to your current branch.
 - `git branch --no-merged`
 
-## Git rebase
+---
+## 17. Git rebase
 
 **What is git rebase?**
 When a user wants his commit to be a single line(without squashing) even when multiple branches have been integrated into the repository, then he can use git rebase. 
@@ -573,7 +569,7 @@ It adds the parked commit to the head of the branch.
 
 ---
 
-## Interactive rebase
+## 18. Interactive rebase
 Interactive rebase is a tool fo optimizing and cleaning up your commit history. With the help of interactive rebasing we can perfrom the following operation.
 - Change a commit's message
 - deletes commits
@@ -607,11 +603,11 @@ Afer making/specifying the action in the first code editor, when we close this e
 - To make changes to a commit we need to atleast specify commit's parent as the base in the command. So for making changes to the HEAD~2 commit, we need to specify HEAD~3 as the base commit in the command like `git rebase -i HEAD~3`
 
 ---
-## Cherry picking
+## 19. Cherry picking
 
 
 ---
-## Reflog
+## 20. Reflog
 *Reflog* is a diary/log where git keep track of every movement of the head pointer. It stores the "commit hash" of the commit when our head pointer was in the branch.
 
 A very important use of *reflog* is for recovering deleted commit, branches. As reflog keep track of all the commit hash. We can copy the "commit-hash" of the commit that we wish to retrieve and create new branch using `git branch <branch-name> commit#`
@@ -625,11 +621,16 @@ A very important use of *reflog* is for recovering deleted commit, branches. As 
 
 ---
 
-## Submodules
+## 21. Submodules
 
 ---
-git revert reset
-git tag
-git stash
-git blame
-git bisect
+## 22. git revert reset
+---
+## 23. git tag
+---
+## 24. git stash
+---
+## 25. git blame
+---
+## 26. git bisect
+---
