@@ -56,6 +56,7 @@ It is a version control system. It is used to track changes in files and directo
 1. GIT has three main states that your files can reside in: committed, modified, and staged.
 1. Git generally only adds data to the repository.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 2. Setting GIT for usage.
@@ -67,6 +68,7 @@ It is a version control system. It is used to track changes in files and directo
 - `git config --list`
     - To display the list of configuration option for the user either globally or for a particualar directory.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 3. GIT - Three stage architecutre
 
@@ -78,6 +80,7 @@ It is a version control system. It is used to track changes in files and directo
 - *Stagging area* - It is the area where the files are staged for commit.
 - *Local repository* - It is the area where the files are stored after commit.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 4. Getting started - Tracking your file
@@ -98,6 +101,7 @@ It is a version control system. It is used to track changes in files and directo
 
 - `git clone <url>` - Clones the repository from the url to the local machine.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 5. GIT file status lifecycle
@@ -123,6 +127,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 1. The file is in the modified state and the staged state(both co-exist).
 1. The file is committed using `git commit` and the file in the staged state is captured in the local repository and the file in the modified state still exist in the modified state.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 6. Unstaging or unmodifying files
 
@@ -136,6 +141,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 
 **Note**: `git restore` command cannot be used to move a file from "staged files" to "untracked files". To move a file from "staged file" to "untracked files" we need to use '`git rm --cached <filename>`'. Though in order to use "." to specify all the file we need to use "-r" flag to specify files to be deleted recursively. `git rm --cached -r .`.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 --- 
 
 ## 7. .gitignore file
@@ -160,13 +166,14 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 
 **Note**: If a file is already tracked by GIT and is added to the .gitignore file, then the file will still be tracked by GIT. To stop tracking the file, we need to remove the file from the git repository using `git rm --cached <filename>` and commit the changes.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 8. GIT diff
 
 - `git diff` - Shows the difference between the modified version(there should be a modified verison of the file or it does not yield any result) of a file and the staged version of the file(if one exists or the committed version of the file)
 - `git diff --staged` - Shows the difference between the staging area and the local repository.
 
-
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 9. Moving and Renaming files
 
@@ -175,6 +182,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 
 **Note**: These command are equivalent to there linux commands. The only difference is that the git command autoamatically tracks the changes and add these changes to the staging area to be commited.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 10. Viewing(logging) commit history and difference between the commits.
 - `git log` - to display the commit history.
@@ -234,6 +242,7 @@ $ git log --before="YYYY-MM-DD"
 
 Refer official git documentation for the format pattern
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ### 11. All about git commit
@@ -275,7 +284,7 @@ Now git ask if we want to add the patch to staging area or not for each patch co
 
 When we commit a message in our code editor. The first line of commit is the subject then we have to leave one line after that and now we can add a body to the commit.
 
-
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 12. Setting alias in git
@@ -290,6 +299,7 @@ When we commit a message in our code editor. The first line of commit is the sub
 
 **Example** - `git config --global alias.last 'log -p -1'`
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 13. Working with remote repositories
 
@@ -345,6 +355,7 @@ A fork is a personal copy of a git repository. By creating a "fork" of the origi
 
 --set-upstream  flag sets a default branch for you local branch. Every branch can have an upstream/default branch on the remote. So whenever they push or pull they do not need to specify the branch like `git push origin master` they can just use `git push`. These(i.e. setting upstream) also keep your branch in sync with the remote repository.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 14. All about branches in GIT.
@@ -457,6 +468,7 @@ $ git log main..feature
 ```
 Note: This command shows the commit that are in the feature branch but are not in the main branch.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 15. Git merge and squash
 
@@ -492,6 +504,7 @@ git looks for three things before merging a branch
 
 ![merge using squash](/images/merge_using_squash_flag.png)
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 16. Merge conflict
 
@@ -535,6 +548,7 @@ simply solve the conflict in one of the files and keep only the changes that you
 - `git branch --merged` - This command returns the list of branches that have been already merged to your current branch.
 - `git branch --no-merged`
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 17. Git rebase
 
@@ -567,6 +581,7 @@ It adds the parked commit to the head of the branch.
 
 **Warning**: Do not use rebase on commits that you've already pushed/shared on a remote repository. Instead use it for cleaning up your local commit history before merging them it into shared team branch.
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 18. Interactive rebase
@@ -602,10 +617,11 @@ Afer making/specifying the action in the first code editor, when we close this e
 **Note**  
 - To make changes to a commit we need to atleast specify commit's parent as the base in the command. So for making changes to the HEAD~2 commit, we need to specify HEAD~3 as the base commit in the command like `git rebase -i HEAD~3`
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 19. Cherry picking
 
-
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 20. Reflog
 *Reflog* is a diary/log where git keep track of every movement of the head pointer. It stores the "commit hash" of the commit when our head pointer was in the branch.
@@ -619,18 +635,24 @@ A very important use of *reflog* is for recovering deleted commit, branches. As 
 ![After resetting](/images/After_resetting.png)
 3. Later we realized it was a bad idea. Now we can use the commit hash from the reflog `git reflog` to reset the branch to its previous state `git reset --hard commit#`. We can also create a new branch based on the deleted commit that we want to retrieve by using `git branch <branch-name> commit#`. 
 
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 
 ## 21. Submodules
-
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 22. git revert reset
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 23. git tag
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 24. git stash
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 25. git blame
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 26. git bisect
+[index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
