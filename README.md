@@ -37,16 +37,18 @@ It is a version control system. It is used to track changes in files and directo
  
 **Features of GIT:**
 1. Easily recoverable.
-1. Who introduced an issue and when?
+1. Who, when introduced an issue?
 1. Roll back to previously working state.
 
 **History of VCS:**  
-- *Local VCS*:Uses DB and keep track of files, locally on the computer.
+- *Local VCS*: Uses DB and keep track of files, locally on the computer.
     - Pros: Can track files and rollback to previous versions.
     - Cons: Files are stored locally, so there are chances of losing data.
-- *Centralized VCS*:Uses a central server to store all files and enables team collaboration.
+    
+- *Centralized VCS*: Uses a central server to store all files and enables team collaboration.
     - Pros: Can track files and rollback to previous versions. Can collaborate with team members.
     - Cons: If the central server goes down, then no one can collaborate or track files.
+    
 - *Distributed VCS*: Each and every person contributing to the source code has a copy of the version of the source code. Also storing the history  of the codebase.
 
 **Distinctive features of GIT from other VCS:**
@@ -62,12 +64,9 @@ It is a version control system. It is used to track changes in files and directo
 
 ## 2. Setting GIT for usage.
 
-- `git config --global user.name "John Doe"`
-    - Setting the user name to be displayed in the commit.
-- `git config --global user.email = "johndoe@gmail.com"`
-    - setting the user email address to be displayed in the commit.
-- `git config --list`
-    - To display the list of configuration option for the user either globally or for a particualar directory.
+- `git config --global user.name "John Doe"`: Setting the user name to be displayed in the commit.
+- `git config --global user.email = "johndoe@gmail.com"`: Setting the user email address to be displayed in the commit.
+- `git config --list`: To display the list of configuration option for the user either globally or for a particular directory.
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
@@ -110,13 +109,15 @@ It is a version control system. It is used to track changes in files and directo
 
 ## 5. GIT file status lifecycle
 
-- *Untracked* - The file is not tracked by GIT.
-- *Unmodified* - The file is tracked by GIT and is not modified.
-- *Modified* - The file is tracked by GIT and is modified.
-- *Staged* - The file is tracked by GIT and is staged for commit.
-- *committed* - The file is tracked by GIT and is committed to the local repository.
+- *Untracked* - The file is not being tracked by GIT.
+- *Unmodified* - The file is being tracked and is not modified(i.e. same as the initial file).
+- *Modified* - The tracked file is modified.
+- *Staged* - The tracked file is modified and is now staged for commiting.
+- *commited* - The changes in the staged files are captured as snapshot and the file is again moved to unmodified section.
 
 Once a git repository is initialized all the files inside it are untracked. Using `git add` we can add the files to the staging area. Once the files are added to the staging area, the files are tracked by GIT and are in the staged state. Once the files are committed, the files are in the unmodified state. If a file is in staging area and is modified, then the file co-exits in the staging area as well as the modified area. Commiting the file will capture the snapshot of the file in the staging area.
+
+**File status lifecycle**  
 
 ![File status lifecycle](/images/fileStatusLifecycle.png)
 
@@ -136,8 +137,8 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 ---
 ## 6. Unstaging or unmodifying files
 
-- `git restore --staged <file>` - This command is used to move file from staging are back to modified file section(i.e. for unstaging the files)
-- `git checkout -- <file>` - This is another commit used to unstage the file
+- `git restore --staged <file>` - This command is used to move file from staging area back to modified file section(i.e. for unstaging the files)
+- `git checkout -- <file>` - This is another command used to unstage the file
 - `git restore <file>` - This command is used to discard any changes in the file. It moves files from modified file section to unmodified file section. The changes to the unstaged files(modified file) is discarded and the files is restored to the version of the file from the previous commit.
 
 **Note**: We can use "." flag with the `git restore` command to specify all the file at once, and the "-f" flag with `git checkout` command to specify all the file at once.
@@ -159,7 +160,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 `<filename with extension>`  
 `<directoryname>`  
 `<pattern>`  
-`!` - To unignore the file.  
+`!<filename>` - To unignore the file.  
 `*.ext` - To ignore all files in the directory. With the specified extension.  
 `*` - To ignore all files in the directory.  
 `**` - To ignore all files in the directory and subdirectories.  
@@ -177,8 +178,8 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 ---
 ## 8. GIT diff
 
-- `git diff` - Shows the difference between the modified version(there should be a modified verison of the file or it does not yield any result) of a file and the staged version of the file(if one exists or the committed version of the file)
-- `git diff --staged` - Shows the difference between the staging area and the local repository.
+- `git diff` - Shows the difference between the modified version(there should be a modified verison of the file or else it does not yield any result) of a file and the staged version of the file(if one exists or the committed version of the file)
+- `git diff --staged` - Shows the difference between the staging area and the perviously commited files.
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
@@ -188,7 +189,7 @@ Once a git repository is initialized all the files inside it are untracked. Usin
 - `git mv <filename> <newfilename>` - Moves the file to the new file name. This command is equivalent to `mv <filename> <newfilename>` 
 - `git rm <filename>` - Removes the file from the working directory. This command is equivalent to `rm <filename>`
 
-**Note**: These command are equivalent to there linux commands. The only difference is that the git command autoamatically tracks the changes and add these changes to the staging area to be commited.
+**Note**: These command are equivalent to there linux commands. The only difference is that the git command automatically tracks the changes and add these changes to the staging area to be commited.
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
@@ -239,8 +240,8 @@ $ git log --before="YYYY-MM-DD"
 
 **Difference between author and commit**
 
-**Author** - The one user who has created the file is the author of the file.  
-**Commit** - The one who has made changes and commited the file.
+**Author** - The user who has created the file is the author of the file.  
+**Commit** - The use who has made changes and commited the file.
 
 **Filtering commit history using days**
 
@@ -265,7 +266,7 @@ Refer official git documentation for the format pattern
 
 **Skipping the staging area**
 
-- `git commit -a -m "message"` - This command skips the stagging area and directly commits all the files from the modified section to the local repository. This command does not add the untracked files to the staging area. This command does not work for new files. This command is not recommended as it does not give a chance to review the changes before commiting.
+- `git commit -a -m "message"` - This command skips the stagging area and directly commits all the files from the modified section to the local repository. This command does not add the untracked files to the staging area(i.e. this command does not work for new files). This command is not recommended as it does not give a chance to review the changes before commiting.
 
 **The perfect commit**
 
@@ -274,24 +275,25 @@ Refer official git documentation for the format pattern
 
 - Not to do - Not just cram everything into one single commit.
 
-**Note** - Once commit should only include change to a specific topic.
+**Note** - One commit should only include change to a specific topic.
 
-- Use staging are to select files that are related to changes for a specific topic and then do a commit. We can consequently make other commit for other changes.
+- Use staging area to select files that are related to changes for a specific topic and then do a commit. We can consequently make other commit for other changes.
 
 **Adding a patch of code to the stagging area:**
 
-Patch: A part or small chunck of code that you have changed.
+Patch: A "patch" is a part or small chunck of code that you have changed.
 
 - `git add -p <filename>`
 
-Now git ask if we want to add the patch to staging area or not for each patch consecutively. Press 'Y' for yes or 'n' for no.
+Now git ask if we want to add the patch to staging area or not for each patch consecutively. Press 'Y' for yes, 'n' for no or 'e' for manually selecting the patch.
 
 **The perfect commit message**
 1. Subject = Concise summary of what happened.
 1. Body = More detailed explanation(what is now different than before)
 
-**Creating a commit message with a subject and a body**
+**Note**: Body is note displayed in log when we want the summary or a brief of the commit history.
 
+**Creating a commit message with a subject and a body**  
 When we commit a message in our code editor. The first line of commit is the subject then we have to leave one line after that and now we can add a body to the commit.
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
@@ -300,7 +302,7 @@ When we commit a message in our code editor. The first line of commit is the sub
 
 ## 12. Setting alias in git
 
-- `git config --global alias.shortcut_key git_command` - This command is used to set alais for a git command
+- `git config --global alias.shortcut_key git_command` - This command is used to set alias for a git command
 
 **Example** - `git config --global alias.st status` - Command to create 'st' as a shortcut for status.
 
@@ -317,7 +319,7 @@ When we commit a message in our code editor. The first line of commit is the sub
 
 1. Click on the "+" icon in the top-right corner
 1. Click on 'New repository'
-1. Enter the details like name, description
+1. Enter the details like name, description, etc.
 1. Click on create repository
 
 A new window for quick setup appears
@@ -328,7 +330,7 @@ A remote server is a server hosting your git project somewhere on the internet.
 - `git remote -v` - This command is used to display all the url for the remote repository.
 
 
-*Pull* - Pull command is used to fetch any changes made on the remote server to your local version. A pull command does a `git fetch` followed by a `git commit`
+*Pull* - Pull command is used to fetch any changes made on the remote server to your local version. A pull command does a `git fetch` followed by a `git merge`.   
 *Push* - It is just and incremental push. This command update the remote repository with any changes made on our local git.
 
 **Note**: Push command requires access from the remote server to upload the data.
@@ -358,8 +360,8 @@ Now we can add this generated SSH key to our git account.
 - A pull request invites reviewers to provide feedback before merging
 - Contributing code to other repositories
 
-**Fork**
-A fork is a personal copy of a git repository. By creating a "fork" of the original repository, where you can make changes, and then you can suggest those changes to be included via pull request to the main repository.
+**Fork**:
+A fork is a personal copy of a git repository. By creating a "fork" of the original repository, you can make changes, and then you can suggest those changes to be included via pull request to the main repository.
 
 **--set-upstream flag**
 
@@ -382,28 +384,26 @@ A written convention - Agree on a branching workflow in your team.
 **Why to do this -** 
 
 1. Git allows you to create branches - but it doesn't tell you how to use them.
-1. You need a written best practice of how to work that is idealy structured for your team to avoid mistakes and collisions.
+1. You need a written best practice of how to work, that is idealy structured for your team to avoid mistakes and collisions.
 1. It highly depends on your team, team size, on your project and how you handle releases.
-1. It hels to onboard new team member.
+1. It helps to onboard new team member.
 
 
 **Startegies for integrating changes and structuring releases.**
 
-*Mainline development*("Always be integrating")
-- Few branches
-- Relatively small commits
-- High - quality testing and QA standards(since the commit are directly added to main branch)
+1. *Mainline development*("Always be integrating")
+    - Few branches
+    - Relatively small commits
+    - High - quality testing and QA standards(since the commit are directly added to main branch)
 
-*state, release and feature Branches*
-
-Branches enhance structures and workflows of the development.
-Different type of branches, fulfill differeent types of jobs
+2. *state, release and feature Branches*  
+Branches enhance structures and workflows of the development. Different type of branches, fulfil different types of jobs.
 
 **Types of branches**
 
 1. Long running branches - Exist through the complete lifetime of the project. Often, they mirror "stages" in your dev life cycles.
 
-*Common convention*: No direct commit(only through merge and rebase)
+*Common convention*: No direct commit(generally through merge)
 
 2. Short lived branches - For new features, bug fixes, refactoring, experiments. Branches are deleted after integration.
 
@@ -415,8 +415,8 @@ Different type of branches, fulfill differeent types of jobs
 
 1. Creating new branch(based on current) "Head" branch
 - `git branch <new branch name>`
-- `git checkout -b <branchname>` - This command switches a branch if one exits or else create a new branch and then switches to the new branch.
-- `git checkout <branchname>` - This command switches to the specified branch(if one exists) or throws an error if one does not exist.
+- `git checkout -b <branchname>` - This command creates a branch and then switches to the newly created branch. If a branch already exist then it gives an error.
+- `git checkout <branchname>` - This command switches to the specified branch(if one exists) or else throws an error if one does not exist.
 - `git branch` - shows a list of branch
 
 **Note** - Changing branches have no effect on ignored files.
@@ -441,7 +441,7 @@ $ git switch <branchname>
 
 6. Pushing to a remote branches  
 `git push -u origin <local branch>`
--u specifies to keep track of remotee branch, so next time we can use "git push" simply.
+-u specifies to keep track of remote branch, so next time we can use "git push" simply.
 
 7. Tracking branches(connecting branches with each other)
 ```
@@ -452,7 +452,7 @@ $ git branch --track <new-branch> origin/<base-branch>
 $ git branch --track origin/<base-branch>
 ```
 
-8. Checking status of your branches  
+8. Checking status(last commit) of your branches  
 `git branch -v`
 
 9. Deleting branches
@@ -486,15 +486,16 @@ Note: This command shows the commit that are in the feature branch but are not i
 ---
 ## 15. Git merge and squash
 
-Git merge is used to integrate changes from one branch into another branch. `git merge` command is used to merge branches.
+"Git merge" is used to integrate changes from one branch into another branch. `git merge` command is used to merge branches.
 
 **How a git merge workds**
 
-1. A simplified scenario(Fast-forward merge)
-git looks for three things before merging a branch
-- Common ancestor
-- last commit on the current branch
-- last commit on the branch to be merged
+- git looks for three things before merging a branch:
+    - Common ancestor
+    - last commit on the current branch
+    - last commit on the branch to be merged
+
+1. A simplified scenario(Fast-forward merge).
 ![fast-forward merge](/images/fast_forward_merge.png)
 
 2. A more realistic scenario
@@ -638,6 +639,21 @@ Afer making/specifying the action in the first code editor, when we close this e
 
 ---
 ## 19. Cherry picking
+`git merge` integrates the last commit on the branch to be merged with the current branch. But "cherry picking" allows us to select a particular commit and merge the current branch till that commit. It allows us to integrate branches by picking up selective commits.
+
+**Simple merge example**
+[simple merge commit example](/images/simple_merge_commit_example.png)
+
+**Cherry-pick**
+[Cherry picking image demonstration](/images/cherry_picking.png)
+
+**Use case scenario**
+- One use case scenario of cherry picking is when you were supposed to commit of feature-x branch but you made it on the main branch.
+[Cherry picking use case](/images/cherryp_picking_use_case.png)
+- Now, we casn checkout to "feature-x" branch and use `git cherry-pick commit#`.
+- Now we can go back to 'master' branch and delete the lastest branch using `git reset --hard HEAD~1`.
+
+
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
@@ -659,14 +675,66 @@ A very important use of *reflog* is for recovering deleted commit, branches. As 
 ---
 
 ## 21. Submodules
-[Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
+Git submodules allows us to keep a git repository as a sub-directory of another git repository. Git sub modules are simply a reference to another repository at a particular snapshot(commit) in time. Sudmodules do not track git refs or branches and are not automatically updated when the host repository is updated. When adding a submodule to a repository a new .gitmodules file is createde. The .gitmodule file contains meta data about the mapping between the submoudule project's URL and local directory. In case of multiple submodule, the .gitmodule file has a entry for all the submodules.
 
+`git add submodule [url]`: This command is used to add a submodule to an existing repository.
+`git submodule init`: This command is used to copy the mapping from the .gitmoudles file into the local file. Initialize submodule configuration(this command is necessary after creating a submodule)
+
+**Note**: Submodules have their own branches and history.
+**Submodule workflow**  
+Whem making changes to a submodule it is important to publish submodule changes and them update the parent repositories reference to the submoudles.(i.e. if we have made some changes in the submodule and commited this changes then it is important for us to make our main repository aware of this changes be creating a new commit and updating the reference to submodule in our main repository. When working in team environment it is update to push the changes from the submodule and the update the main repository accordingly).
+
+`git clone  --recursive [url]`: This command is used to clone a repository including its submodules.
+
+`git submodule update --init`: This command is used if we have already clone a repository and now we want to load it's submodules.
+
+`git pull --recurse-submodules`: Pull all changes in the repo including chantes in the submodules
+
+`git submodule update --remote`: Pull all chantes for the submodules
+
+**Creating a repository with subodules**
+1. Adding a submodule to a git repository and tracking a branch.
+    - `git submoudle add -b master [url]`: This command is used to add submodule and define the master branch as the one we want to track. If we track branches in our submodules, we can update them wiva the --remote paramater of the `git submodule udpate` command.
+2. Adding a submodule and tracking commit.
+    - Alternatively to tracking of a branch, we can also control which commit of the submoudle should be used. In this case git parent repository tracks the commit that should be checked out in each configured submodule.
+3. `rm -rf .git/modules/mymodule`: This command is used to delete the git submodule.
+
+[Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
 ## 22. git revert reset
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
 ---
 ## 23. git tag
+Tagging in GIT refers to creating specific points in history for your repository/date. This is usually done to mark release point.
+
+**Creating tag**
+`git tag <tagname>(v1.0)`: This command is used to create a tag at the current commit. This are know as lightwheight tag.
+
+`git tag -a <tagname> -m "message"`: This command is used to create annoted tag. These are known as annotted tags.
+
+`git tag <tagname> commit#`: This command is used to create a tag from a commit.
+
+**Displaying tag**  
+`git tag`: Display all the tag(only).
+
+`git show v1.0`: Display the tag with the description.
+
+`git tag -l "v.1.*`: `-l` flag is used to provide wildcard for search tags with a particulal pattern.
+
+**Pushing tag to the remote**
+`git push origin <tagname>`: This command is used to push the tag to the remote repo.
+
+`git push origin --tags`: To push all the tag to the remote repo.
+
+**Deleting the tags**  
+`git tag -d <tagname>`: To delete the tag on your local system
+
+`git push origin -d <tagname>`: To delete the tag on the remote repository. 
+
+**Creating a branch from a particular commit**  
+`git checkout -b <branchname> <tagname>`: This command create a branch with the tag commit as the last commit on the branch.
+
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
 ---
@@ -675,6 +743,16 @@ A very important use of *reflog* is for recovering deleted commit, branches. As 
 
 ---
 ## 25. git blame
+`git blame` command is used to examine the contents of a file line by line an see when each line was last modified and who the author of the modification was. git blame only operates on individual files(i.e. it only display changes for one file at a time).
+
+`git blame <filename>`
+
+`git blame -L 1,5 <filename>`: `-L` flag is used to restrict the output to the request line range only.
+
+`git blame -e <filename>`: `-e` flag is used to display users email address instead on username.
+
+`git blame -w <filename>`: `-w` flag ignore changes that only contains white space.
+
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
 ---
@@ -682,3 +760,13 @@ A very important use of *reflog* is for recovering deleted commit, branches. As 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
 ---
+
+
+## 27. git describe
+`git describe` shows the most recent tag that is reachable from a commit. If the tag points to the last commit, then only the tag is shown. Otherwise, it suffixes the tag name with the "number of additional commit on top of the tagged object and the abbreviated commit of the most recent commit". By default git describe ony shows annotated tags. Example of git describe output `1.0-24-g31cdd0f`.
+
+`git describe`: Show the most recent tag that is reachable from a commit.
+
+`git describe --tags`: Instead of only using annoted tag, use any tag found. These option enables matching a light weight(non-annotated tag).
+
+[Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
