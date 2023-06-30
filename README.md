@@ -22,7 +22,7 @@
 1. [Cherry picking ](https://github.com/iam-rahul-sah/GitTutorials#19-cherry-picking)
 1. [Reflog](https://github.com/iam-rahul-sah/GitTutorials#20-reflog)
 1. [Submodules](https://github.com/iam-rahul-sah/GitTutorials#21-submodules)
-1. [git revert reset](https://github.com/iam-rahul-sah/GitTutorials#22-git-revert-reset)
+1. [git revert reset](https://github.com/iam-rahul-sah/GitTutorials#22-git-revert-reset-and-checking-out)
 1. [git tag](https://github.com/iam-rahul-sah/GitTutorials#23-git-tag)
 1. [git stash](https://github.com/iam-rahul-sah/GitTutorials#24-git-stash)
 1. [git blame](https://github.com/iam-rahul-sah/GitTutorials#25-git-blame)
@@ -701,7 +701,55 @@ Whem making changes to a submodule it is important to publish submodule changes 
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 ---
-## 22. git revert reset
+## 22. git revert reset and checking out
+`git reset`, `git revert` and `git checkout` let us undo some kind of changes in our repository. 
+**Note:** "git reset" and "git checkout" can be used to manipulate either commit or indiviual files. Whereas "git revert" can only be used for manipulation commits.
+
+- commit-level: It means undoing changes to the whole commit to a specific commit.
+- file-level: It means undoing changes of the file's content to those of the specific commit.
+
+| Command | scope | common use cases |
+|---|---|---|
+| `git reset` | commit-level | Discard commits in a private branch or throws away uncommited changes(changes commit history)|
+| `git reset` | file-level | unstage a file|
+| `git checkout` | commit-level | Swith between branches or inspect old snapshots(also changes commit history)|
+| `git checkout` | file-level | discard changes in the working directory |
+| `git revert` | commit-level | undo commit in a public branch.|
+| `git revert` | file-level | NA|
+
+**Note:** the parameter that we pass to the `git checkout` and `git reset` determines the scope of command. Both of these command takes a file name as argument if a file name is passed it is a *"file-level"* command or else it is a *"commit-level"* command.
+
+1. **git checkout:** A checkout is an operation that moves the `HEAD` ref pointer to a specified commit. When checkcout command moves the HEAD pointer to the specified commit this put us in a detached HEAD state. This can be potentially dangerous if we start adding new commit becuase there will be no way to get back to them.
+```bash
+git checout HEAD~2         #changes the state to HEAD~2 state this is useful for instpecting the code  
+```
+- file-level `git checkout` discard any changes to the specified file(i.e. it updates the working directory instead of the stagged snapshot)
+```bash
+git checkout HEAD~2 foo.py     # makes the foo.py in the working directory match the one from 2nd-to-last commit.
+```
+
+**Note:** since checkout only changes the state of the git repo. It has potential to overwrite local changes, git forces us to stash or commit any changes in the wokring directory that will be lost during the checkout operation. 
+
+2. **git revert:** A revert is an operation that takes the specified commit and creates a new commit which inverse all the files to the specified commit(and thus resetting the files). git revert can only be run at a commit level scope and has no file level functionality.
+```bash
+git revert HEAD~2          # this create a new commit and matches the state of git repo to that commit.
+git revert --no-edit       # when we don't want to edit the default commit message for the new commit or else it prompt a window for adding the message
+git revert --no-commit    # this will revert the changes to the  specified commit will not commit it.
+```
+**Note:** Reverting a commit will take you to the version that the repo was before the specified commit(i.e. it will match the repo to the state of the commit before the specified commit.)
+
+3. **git reset:** A reset is an operation that takes a specified commit and resets the *working directory, stagged snapshot and commit history(the three trees)* to match the state of the repository at that specified commit. When we reset our branch to a specific commit in the commit history all the commit perform afer it are left dangling (also known as orphaned commit i.e. the commits will be deleted next time when GIT perfroms garbage collection). 
+`eg. git reset HEAD~2` // make our git branch to the state of HEAD~2 commit
+- A reset can be invoked in three different modes which corresponds to the three trees.
+    - `--soft`: The staged snapshot and working directory are not altered in any way.
+    - `--mixed`(default): The staged snapshot is updated to match the specified commit, but the working directory is not affecteds in any way.
+    - `--hard`: the staged snapshot and working directory are both updated to match the specified commit.
+- file level `git reset` updates the staged snapshot to match the version from the specified commit.
+```bash
+git reset HEAD foo.py          # unstages the file, changes exist as unstaged.
+```
+
+**Note:** *"reset"* and *"checkout"* are generally used for making local and private "undos". They modify the history of a repository. *"revert"* is considered a safe option for "public undoes" as it creates new commit and does not overwrite the commit history.
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
 ---
