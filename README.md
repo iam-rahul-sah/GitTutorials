@@ -616,7 +616,7 @@ Interactive rebase is a tool fo optimizing and cleaning up your commit history. 
 
 **Step 2**: `git rebase -i HEAD~3`, here  
 ![git head structure](/images/interactive_rebasing.png)
-- HEAD~3 specifies that we want the last third commit to be the base, commit starting from HEAD, HEAD~1, HEAD~2 and so on.
+- `HEAD~3` specifies that we want the last third commit to be the base, commit starting from `HEAD`, `HEAD~1`, `HEAD~2` and so on.
 - `-i` flag is used to specify interactive rebasing
 
 **Step3**  
@@ -633,7 +633,7 @@ Afer making/specifying the action in the first code editor, when we close this e
 **Note**  
 - If we wish to make changes to the last commit we should use `git merge --amend` command instead.
 **Note**  
-- To make changes to a commit we need to atleast specify commit's parent as the base in the command. So for making changes to the HEAD~2 commit, we need to specify HEAD~3 as the base commit in the command like `git rebase -i HEAD~3`
+- To make changes to a commit we need to atleast specify commit's parent as the base in the command. So for making changes to the `HEAD~2` commit, we need to specify `HEAD~3` as the base commit in the command like `git rebase -i HEAD~3`
 
 [Index](https://github.com/iam-rahul-sah/GitTutorials#git-tutorials)
 
@@ -642,10 +642,10 @@ Afer making/specifying the action in the first code editor, when we close this e
 `git merge` integrates the last commit on the branch to be merged with the current branch. But "cherry picking" allows us to select a particular commit and merge the current branch till that commit. It allows us to integrate branches by picking up selective commits.
 
 **Simple merge example**
-[simple merge commit example](/images/simple_merge_commit_example.png)
+![simple merge commit example](/images/simple_merge_commit_example.png)
 
 **Cherry-pick**
-[Cherry picking image demonstration](/images/cherry_picking.png)
+![Cherry picking image demonstration](/images/cherry_picking.png)
 
 **Use case scenario**
 - One use case scenario of cherry picking is when you were supposed to commit of feature-x branch but you made it on the main branch.
@@ -678,9 +678,11 @@ A very important use of *reflog* is for recovering deleted commit, branches. As 
 Git submodules allows us to keep a git repository as a sub-directory of another git repository. Git sub modules are simply a reference to another repository at a particular snapshot(commit) in time. Sudmodules do not track git refs or branches and are not automatically updated when the host repository is updated. When adding a submodule to a repository a new .gitmodules file is createde. The .gitmodule file contains meta data about the mapping between the submoudule project's URL and local directory. In case of multiple submodule, the .gitmodule file has a entry for all the submodules.
 
 `git add submodule [url]`: This command is used to add a submodule to an existing repository.
+
 `git submodule init`: This command is used to copy the mapping from the .gitmoudles file into the local file. Initialize submodule configuration(this command is necessary after creating a submodule)
 
 **Note**: Submodules have their own branches and history.
+
 **Submodule workflow**  
 Whem making changes to a submodule it is important to publish submodule changes and them update the parent repositories reference to the submoudles.(i.e. if we have made some changes in the submodule and commited this changes then it is important for us to make our main repository aware of this changes be creating a new commit and updating the reference to submodule in our main repository. When working in team environment it is update to push the changes from the submodule and the update the main repository accordingly).
 
@@ -703,6 +705,7 @@ Whem making changes to a submodule it is important to publish submodule changes 
 ---
 ## 22. git revert reset and checking out
 `git reset`, `git revert` and `git checkout` let us undo some kind of changes in our repository. 
+
 **Note:** "git reset" and "git checkout" can be used to manipulate either commit or indiviual files. Whereas "git revert" can only be used for manipulation commits.
 
 - commit-level: It means undoing changes to the whole commit to a specific commit.
@@ -721,7 +724,7 @@ Whem making changes to a submodule it is important to publish submodule changes 
 
 1. **git checkout:** A checkout is an operation that moves the `HEAD` ref pointer to a specified commit. When checkcout command moves the HEAD pointer to the specified commit this put us in a detached HEAD state. This can be potentially dangerous if we start adding new commit becuase there will be no way to get back to them.
 ```bash
-git checout HEAD~2         #changes the state to HEAD~2 state this is useful for instpecting the code  
+git checkout HEAD~2         #changes the state to HEAD~2 state this is useful for instpecting the code  
 ```
 - file-level `git checkout` discard any changes to the specified file(i.e. it updates the working directory instead of the stagged snapshot)
 ```bash
